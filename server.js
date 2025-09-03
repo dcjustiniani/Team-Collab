@@ -10,16 +10,24 @@ app.get("/greet/:name", (req, res) => {
   res.json({ message: `Hello, ${name}! Welcome to our API.` });
 });
 
-// 2. Random Joke API
-const jokes = [
-  "Why do programmers prefer dark mode? Because the light attracts bugs.",
-  "Why was the computer cold? It forgot to close its Windows.",
-  "Why did the developer go broke? Because he used up all his cache.",
-  "Why was the JavaScript developer sad? Because he didn’t know how to null his feelings.",
-  "Why don’t programmers like to go outside? The sun causes too many glare errors.",
-  "Why was the computer cold? It left its Windows open.",
-  "why si jundel is so gwapo"
+// 2. Mind Breaks API
+const mindbreaks = [
+  "If you try to fail and succeed, did you fail or succeed?",
+  "Your future self is watching you through memories.",
+  "When you clean a vacuum cleaner, you become the vacuum cleaner.",
+  "Every second that passes is the youngest you’ll ever be again.",
+  "If nothing is impossible, is it possible for something to be impossible?",
+  "You can never stand in the same river twice.",
+  "The word 'dictionary' is in the dictionary.",
+  "The present is the only time that truly exists, yet it’s gone the moment you notice it.",
+  "If practice makes perfect, and nobody’s perfect, why practice?",
+  "When you think of your brain, your brain is thinking about itself."
 ];
+
+app.get("/mindbreak", (req, res) => {
+  const randomIndex = Math.floor(Math.random() * mindbreaks.length);
+  res.json({ thought: mindbreaks[randomIndex] });
+});
 
 
 app.get("/joke", (req, res) => {
