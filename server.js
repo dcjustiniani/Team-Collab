@@ -17,7 +17,8 @@ const jokes = [
   "Why did the developer go broke? Because he used up all his cache.",
   "Why was the JavaScript developer sad? Because he didn’t know how to null his feelings.",
   "Why don’t programmers like to go outside? The sun causes too many glare errors.",
-  "Why was the computer cold? It left its Windows open."
+  "Why was the computer cold? It left its Windows open.",
+  "why si jundel is so gwapo"
 ];
 
 
