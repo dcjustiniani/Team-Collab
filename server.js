@@ -23,7 +23,8 @@ const mindbreaks = [
   "If practice makes perfect, and nobody’s perfect, why practice?",
   "When you think of your brain, your brain is thinking about itself.",
   "Every person you pass is living a life as vivid and complex as yours.",
-  "You are not alone Lord have you always in all ways."
+  "You are not alone Lord have you always in all ways.",
+  "You’ve never actually seen your own face, only reflections or pictures."
 ];
 
 // GET random mindbreak
