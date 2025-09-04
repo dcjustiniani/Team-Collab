@@ -39,7 +39,7 @@ Express.js → A lightweight framework built on Node.js for creating APIs and we
 
 1. Clone the repository
    
-git clone <your-repo-url>
+git clone your-repo-url 
 
 2. Initialize the project (if not already done)
 
