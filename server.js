@@ -10,7 +10,7 @@ app.get("/greet/:name", (req, res) => {
   res.json({ message: `Hello, ${name}! Welcome to our API.` });
 });
 
-// 2. Mind Breaks API
+// 2. Mindbreaks API
 const mindbreaks = [
   "If you try to fail and succeed, did you fail or succeed?",
   "Your future self is watching you through memories.",
@@ -29,22 +29,6 @@ const mindbreaks = [
 app.get("/mindbreak", (req, res) => {
   const randomIndex = Math.floor(Math.random() * mindbreaks.length);
   res.json({ thought: mindbreaks[randomIndex] });
-});
-
-// DELETE mindbreak by index
-app.delete("/mindbreak/:index", (req, res) => {
-  const index = parseInt(req.params.index);
-
-  if (isNaN(index) || index < 0 || index >= mindbreaks.length) {
-    return res.status(400).json({ error: "Invalid index" });
-  }
-
-  const removed = mindbreaks.splice(index, 1);
-  res.json({
-    message: "🗑️ Mindbreak deleted successfully",
-    deleted: removed[0],
-    remaining: mindbreaks.length
-  });
 });
 
 // 3. Math Calculator API (Add, Subtract, Multiply, Divide)
