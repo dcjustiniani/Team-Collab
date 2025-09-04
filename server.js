@@ -22,7 +22,6 @@ const mindbreaks = [
   "The present is the only time that truly exists, yet it’s gone the moment you notice it.",
   "If practice makes perfect, and nobody’s perfect, why practice?",
   "When you think of your brain, your brain is thinking about itself.",
-  "I am a sinner, who's probably gonna sin again. Lord forgive me.",
   "Every person you pass is living a life as vivid and complex as yours."
 ];
 
@@ -31,66 +30,42 @@ app.get("/mindbreak", (req, res) => {
   res.json({ thought: mindbreaks[randomIndex] });
 });
 
-// 3. Math Challenge API (Random operation)
-app.get("/math-challenge", (req, res) => {
-  const num1 = Math.floor(Math.random() * 10) + 1;
-  const num2 = Math.floor(Math.random() * 10) + 1;
-  const operations = ["add", "subtract", "multiply", "divide"];
-  const operation = operations[Math.floor(Math.random() * operations.length)];
+// 3. Math Calculator API (Add, Subtract, Multiply, Divide)
+app.post("/:operation", (req, res) => {
+  const { num1, num2 } = req.body;
+  const operation = req.params.operation;
 
-  let challenge, answer;
-
-  switch (operation) {
-    case "add":
-      challenge = `${num1} + ${num2}`;
-      answer = num1 + num2;
-      break;
-    case "subtract":
-      challenge = `${num1} - ${num2}`;
-      answer = num1 - num2;
-      break;
-    case "multiply":
-      challenge = `${num1} × ${num2}`;
-      answer = num1 * num2;
-      break;
-    case "divide":
-      challenge = `${num1} ÷ ${num2}`;
-      answer = Number((num1 / num2).toFixed(2)); // rounded to 2 decimals
-      break;
+  if (typeof num1 !== "number" || typeof num2 !== "number") {
+    return res.status(400).json({ error: "Please provide two numbers" });
   }
 
-  res.json({ challenge, operation, hint: "Solve and POST your answer to /math-challenge" , answer });
-});
-
-app.post("/math-challenge", (req, res) => {
-  const { operation, num1, num2, userAnswer } = req.body;
-
-  let correctAnswer;
+  let result;
   switch (operation) {
     case "add":
-      correctAnswer = num1 + num2;
+      result = num1 + num2;
       break;
     case "subtract":
-      correctAnswer = num1 - num2;
+      result = num1 - num2;
       break;
     case "multiply":
-      correctAnswer = num1 * num2;
+      result = num1 * num2;
       break;
     case "divide":
-      correctAnswer = Number((num1 / num2).toFixed(2));
+      if (num2 === 0) {
+        return res.status(400).json({ error: "Division by zero is not allowed" });
+      }
+      result = num1 / num2;
       break;
     default:
-      return res.status(400).json({ error: "Invalid operation" });
+      return res.status(400).json({ 
+        error: "Invalid operation. Use add, subtract, multiply, or divide." 
+      });
   }
 
-  if (userAnswer === correctAnswer) {
-    return res.json({ message: "✅ Correct! You solved the challenge." });
-  } else {
-    return res.json({ message: `❌ Incorrect. The correct answer was ${correctAnswer}.` });
-  }
+  res.json({ operation, result });
 });
 
-
+// Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
