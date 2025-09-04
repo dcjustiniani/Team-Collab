@@ -1,6 +1,9 @@
 # Team-Collab
 A project used for demonstrating team collaboration on Github and API.
 
+Members:
+Justiniani, Dave Cleo G.
+Menancillo, Christian Jacob
 
 📌 API Description
 
