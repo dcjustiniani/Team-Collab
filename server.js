@@ -22,7 +22,8 @@ const mindbreaks = [
   "The present is the only time that truly exists, yet it’s gone the moment you notice it.",
   "If practice makes perfect, and nobody’s perfect, why practice?",
   "When you think of your brain, your brain is thinking about itself.",
-   "I am a sinner, who's probably gonna sin again. Lord forgive me"
+  "I am a sinner, who's probably gonna sin again. Lord forgive me.",
+  "Every person you pass is living a life as vivid and complex as yours."
 ];
 
 app.get("/mindbreak", (req, res) => {
