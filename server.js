@@ -27,7 +27,7 @@ const mindbreaks = [
   "You’ve never actually seen your own face, only reflections or pictures."
 ];
 
-// GET random mindbreak
+// GET random mindbreaks
 app.get("/mindbreak", (req, res) => {
   const randomIndex = Math.floor(Math.random() * mindbreaks.length);
   res.json({ thought: mindbreaks[randomIndex] });
