@@ -25,9 +25,26 @@ const mindbreaks = [
   "Every person you pass is living a life as vivid and complex as yours."
 ];
 
+// GET random mindbreak
 app.get("/mindbreak", (req, res) => {
   const randomIndex = Math.floor(Math.random() * mindbreaks.length);
   res.json({ thought: mindbreaks[randomIndex] });
+});
+
+// DELETE mindbreak by index
+app.delete("/mindbreak/:index", (req, res) => {
+  const index = parseInt(req.params.index);
+
+  if (isNaN(index) || index < 0 || index >= mindbreaks.length) {
+    return res.status(400).json({ error: "Invalid index" });
+  }
+
+  const removed = mindbreaks.splice(index, 1);
+  res.json({
+    message: "🗑️ Mindbreak deleted successfully",
+    deleted: removed[0],
+    remaining: mindbreaks.length
+  });
 });
 
 // 3. Math Calculator API (Add, Subtract, Multiply, Divide)
