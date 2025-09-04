@@ -22,14 +22,15 @@ const mindbreaks = [
   "The present is the only time that truly exists, yet it’s gone the moment you notice it.",
   "If practice makes perfect, and nobody’s perfect, why practice?",
   "When you think of your brain, your brain is thinking about itself.",
-  "Every person you pass is living a life as vivid and complex as yours."
+  "Every person you pass is living a life as vivid and complex as yours.",
+  "You are not alone Lord have you always in all ways."
 ];
 
 // GET random mindbreak
 app.get("/mindbreak", (req, res) => {
   const randomIndex = Math.floor(Math.random() * mindbreaks.length);
   res.json({ thought: mindbreaks[randomIndex] });
-});
+})
 
 // 3. Math Calculator API (Add, Subtract, Multiply, Divide)
 app.post("/:operation", (req, res) => {
