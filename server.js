@@ -31,38 +31,65 @@ app.get("/mindbreak", (req, res) => {
   res.json({ thought: mindbreaks[randomIndex] });
 });
 
-// 3. Math Calculator API (Add, Subtract, Multiply, Divide)
-app.post("/:operation", (req, res) => {
-  const { num1, num2 } = req.body;
-  const operation = req.params.operation;
+// 3. Math Challenge API (Random operation)
+app.get("/math-challenge", (req, res) => {
+  const num1 = Math.floor(Math.random() * 10) + 1;
+  const num2 = Math.floor(Math.random() * 10) + 1;
+  const operations = ["add", "subtract", "multiply", "divide"];
+  const operation = operations[Math.floor(Math.random() * operations.length)];
 
-  if (typeof num1 !== "number" || typeof num2 !== "number") {
-    return res.status(400).json({ error: "Please provide two numbers" });
-  }
+  let challenge, answer;
 
-  let result;
   switch (operation) {
     case "add":
-      result = num1 + num2;
+      challenge = `${num1} + ${num2}`;
+      answer = num1 + num2;
       break;
     case "subtract":
-      result = num1 - num2;
+      challenge = `${num1} - ${num2}`;
+      answer = num1 - num2;
       break;
     case "multiply":
-      result = num1 * num2;
+      challenge = `${num1} × ${num2}`;
+      answer = num1 * num2;
       break;
     case "divide":
-      if (num2 === 0) {
-        return res.status(400).json({ error: "Division by zero is not allowed" });
-      }
-      result = num1 / num2;
+      challenge = `${num1} ÷ ${num2}`;
+      answer = Number((num1 / num2).toFixed(2)); // rounded to 2 decimals
       break;
-    default:
-      return res.status(400).json({ error: "Invalid operation. Use add, subtract, multiply, or divide." });
   }
 
-  res.json({ operation, result });
+  res.json({ challenge, operation, hint: "Solve and POST your answer to /math-challenge" , answer });
 });
+
+app.post("/math-challenge", (req, res) => {
+  const { operation, num1, num2, userAnswer } = req.body;
+
+  let correctAnswer;
+  switch (operation) {
+    case "add":
+      correctAnswer = num1 + num2;
+      break;
+    case "subtract":
+      correctAnswer = num1 - num2;
+      break;
+    case "multiply":
+      correctAnswer = num1 * num2;
+      break;
+    case "divide":
+      correctAnswer = Number((num1 / num2).toFixed(2));
+      break;
+    default:
+      return res.status(400).json({ error: "Invalid operation" });
+  }
+
+  if (userAnswer === correctAnswer) {
+    return res.json({ message: "✅ Correct! You solved the challenge." });
+  } else {
+    return res.json({ message: `❌ Incorrect. The correct answer was ${correctAnswer}.` });
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
