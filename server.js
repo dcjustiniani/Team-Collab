@@ -29,12 +29,6 @@ app.get("/mindbreak", (req, res) => {
   res.json({ thought: mindbreaks[randomIndex] });
 });
 
-
-app.get("/joke", (req, res) => {
-  const randomIndex = Math.floor(Math.random() * jokes.length);
-  res.json({ joke: jokes[randomIndex] });
-});
-
 // 3. Math Calculator API (Add, Subtract, Multiply, Divide)
 app.post("/:operation", (req, res) => {
   const { num1, num2 } = req.body;
