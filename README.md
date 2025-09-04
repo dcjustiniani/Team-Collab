@@ -1,12 +1,18 @@
 # Team-Collab
 A project used for demonstrating team collaboration on Github and API.
 
+
+
 Members:
+
 Justiniani, Dave Cleo G.
 
 Menancillo, Christian Jacob
 
+
+
 📌 API Description
+
 
 This project is a RESTful API built with Express.js running on Node.js. It provides three core features:
 
@@ -19,7 +25,10 @@ Math Calculator API → Performs basic arithmetic operations including addition,
 By default, the server runs locally on http://localhost:3000
 .
 
+
+
 ⚡ Tech Stack
+
 
 Node.js → A powerful runtime environment that allows JavaScript to run on servers.
 
