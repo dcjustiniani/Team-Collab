@@ -92,6 +92,7 @@ Response (example):
 Request:
 
 POST http://localhost:3000/personality
+
 Content-Type: application/json
 
 {
