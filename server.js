@@ -22,7 +22,8 @@ const mindbreaks = [
   "The present is the only time that truly exists, yet it’s gone the moment you notice it.",
   "If practice makes perfect, and nobody’s perfect, why practice?",
   "When you think of your brain, your brain is thinking about itself.",
-  "Every person you pass is living a life as vivid and complex as yours."
+  "Every person you pass is living a life as vivid and complex as yours.",
+  "life is beautiful"
 ];
 
 // GET random mindbreak
