@@ -20,7 +20,7 @@ Greeting API → Returns a personalized welcome message based on the user’s na
 
 Mind Break API → Delivers a random thought-provoking quote to inspire reflection.
 
-Math Calculator API → Performs basic arithmetic operations including addition, subtraction, multiplication, and division.
+Personality Test → This API endpoint takes a user’s name and favorite color as input, then returns a fun, randomized personality description.
 
 By default, the server runs locally on http://localhost:3000
 .
@@ -87,22 +87,20 @@ Response (example):
   "thought": "Every second that passes is the youngest you’ll ever be again."
 }
 
-3. Math Calculator API
+3. Personality Test API
 
 Request:
 
-POST http://localhost:3000/add
+POST http://localhost:3000/personality
+
 Content-Type: application/json
 
 {
-  "num1": 8,
-  "num2": 4
+  "name": "Cj",
+  "favoriteColor": "green'
 }
 
 
 Response:
 
-{
-  "operation": "add",
-  "result": 12
-}
+{"name":"cj","favoriteColor":"green", "personality":"cj, you are a green wizard of wisdom!"}
