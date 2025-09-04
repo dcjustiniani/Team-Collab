@@ -38,20 +38,25 @@ Express.js → A lightweight framework built on Node.js for creating APIs and we
 ⚙️ Installation & Setup
 
 1. Clone the repository
+   
 git clone <your-repo-url> cd <your-project-folder>
 
 2. Initialize the project (if not already done)
+
 npm init -y
 
 3. Install dependencies
+   
 npm install express
 
 4. Run the server
+
 node server.js
 
 5. Access the API
 
 Once the server is running, open your browser or API client (like Postman) and use:
+
 http://localhost:3000
 
 
@@ -60,16 +65,16 @@ http://localhost:3000
 
 Request:
 
-GET http://localhost:3000/greet/Dave
+GET http://localhost:3000/greet/Deyv
 
 
 Response:
 {
-  "message": "Hello, Dave! Welcome to our API."
+  "message": "Hello, Deyv! Welcome to our API."
 }
 
 
-2. Mind Break API
+2. Mind Break API - Random rational thoughts
 
 Request:
 
